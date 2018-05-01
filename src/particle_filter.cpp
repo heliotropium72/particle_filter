@@ -96,7 +96,7 @@ void ParticleFilter::dataAssociation(std::vector<LandmarkObs> predicted, std::ve
 			distance = sqrt(pow(observations[i].x - predicted[i].x, 2) + pow(observations[i].y - predicted[i].y, 2));
 			if (distance < distance_min) {
 				distance_min = distance;
-				observations[i].id = predicted[k].id
+				observations[i].id = predicted[k].id;
 			}
 		}
 
@@ -128,7 +128,7 @@ void ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 
 		// select landmarks within sensor range
 		std::vector<LandmarkObs> predicted;
-		for (int j = 0; j < map_landmarks.landmark_list.size(); j++) {
+		for (size_t j = 0; j < map_landmarks.landmark_list.size(); j++) {
 			// Euclidean distance between each landmark and particle position
 			double distance = sqrt( pow(map_landmarks.landmark_list[j].x_f - particles[i].x, 2) +
 				pow(map_landmarks.landmark_list[j].y_f - particles[i].y, 2) );
